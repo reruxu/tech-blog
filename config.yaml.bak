@@ -17,20 +17,15 @@ params:
         toc: true
         readingTime: true
 
-    # giscusの設定を追加
+    # utterancesの設定を追加
     comments:
         enabled: true
-        provider: giscus
-        giscus:
-          repo: reruxu/tech-blog
-          repoID: "R_kgDONTqS4Q"
-          category: General
-          categoryID: "DIC_kwDONTqS4c4CkigN"
-          mapping: title
-          reactionsEnabled: 0
-          emitMetadata: -1
-          inputPosition: bottom
-          lang: ja
+        provider: utterances
+        utterances:
+            repo: reruxu/tech-blog
+            issueTerm: pathname
+            label: comment
+            theme: preferred-color-scheme
 
     widgets:
         homepage:
@@ -53,3 +48,18 @@ menu:
           name: タグ
           url: /tags/
           weight: 3
+
+params:
+  comments:
+    enabled: true
+    provider: giscus
+    giscus:
+      repo: reruxu/tech-blog
+      repoID: "R_kgDONTqS5Q"
+      category: General
+      categoryID: "DIC_kwDONTqS5c4CkigN"
+      mapping: title
+      reactionsEnabled: 1
+      emitMetadata: 0
+      inputPosition: bottom
+      lang: ja
