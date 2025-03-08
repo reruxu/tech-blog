@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /draft/
+Disallow: /private/
+
+# クロール頻度の調整（必要に応じて）
+Crawl-delay: 10
+
+# サイトマップの場所を指定
+Sitemap: {{ .Site.BaseURL }}sitemap.xml

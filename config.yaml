@@ -6,18 +6,38 @@ pagination:
 languageCode: ja
 defaultContentLanguage: ja
 
+# SEO関連
+enableRobotsTXT: true
+sitemap:
+  changefreq: weekly
+  priority: 0.5
+  filename: sitemap.xml
+
+# サイトパラメータ
 params:
+    # メインセクション設定
     mainSections:
         - posts
+
+    # サイドバー設定
     sidebar:
         emoji: 🚀
         subtitle: "Technical Blog"
-    
+        avatar:
+            enabled: true
+            local: true
+            src: "img/avatar_300x300.png"
+
+    # 記事設定
     article:
         toc: true
         readingTime: true
 
-    # giscusの設定を追加
+    # サイト説明
+    description: "技術的な知見や学びを共有するブログ"
+    keywords: ["技術ブログ", "プログラミング", "システム設計"]
+
+    # コメント設定（既存のgiscus設定を維持）
     comments:
         enabled: true
         provider: giscus
@@ -32,13 +52,34 @@ params:
           inputPosition: bottom
           lang: ja
 
+    # ウィジェット設定
     widgets:
         homepage:
             - type: search
+              params:
+                  limit: 20    # 検索結果の表示数
             - type: archives
               params:
-                  limit: 5
+                  limit: 5     # アーカイブの表示数
 
+    # favicon設定
+    favicon: favicon/favicon_48x48.png
+
+    # 検索の設定
+    search:
+        enabled: true
+        type: "fusejs"
+        fuse:
+            # 検索の精度に関する設定
+            ignoreLocation: true
+            location: 0
+            isCaseSensitive: false
+            minMatchCharLength: 2
+            threshold: 0.3  # 検索の一致度の閾値（0に近いほど厳密な一致が求められる）
+            distance: 100   # 文字間の距離の許容値
+            useExtendedSearch: true
+
+# メニュー設定
 menu:
     main:
         - identifier: home
@@ -46,10 +87,31 @@ menu:
           url: /
           weight: 1
         - identifier: posts
-          name: 記事
+          name: アーカイブ
           url: /posts/
           weight: 2
         - identifier: tags
           name: タグ
           url: /tags/
           weight: 3
+          
+# シンタックスハイライト設定
+markup:
+  highlight:
+    anchorLineNos: true      # 行番号へのリンクを有効化
+    codeFences: true         # コードフェンスを有効化
+    guessSyntax: true        # 言語の自動推測
+    lineNos: true           # 行番号の表示
+    lineNumbersInTable: true # 行番号をテーブル形式で表示
+    noClasses: false        # CSSクラスを使用
+    style: monokailight     # カラースキーム
+    tabWidth: 4            # タブ幅の設定（追加推奨）
+    hl_Lines: ""           # 特定の行をハイライト（必要に応じて）
+    lineNoStart: 1         # 行番号の開始位置（デフォルト値なので省略可）
+
+# 検索機能
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON    # 検索用のJSONファイル出力を追加
